@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "299253456603",
+    "project_id": "escape-game-734b1",
+    "storage_bucket": "escape-game-734b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299253456603:android:93312913af6dc029e936fe",
+        "android_client_info": {
+          "package_name": "fr.mastergime.meghasli.escapegame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299253456603-ndebc5menj73oiqtdcnfhhhs13rc9hvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYjX1LK6oGncjnAve6Obh9YJYZ-btEF_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299253456603-ndebc5menj73oiqtdcnfhhhs13rc9hvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
