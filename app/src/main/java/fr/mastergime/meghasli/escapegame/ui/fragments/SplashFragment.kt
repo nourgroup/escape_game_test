@@ -1,6 +1,9 @@
 package fr.mastergime.meghasli.escapegame.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +29,12 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        findNavController().navigate(R.id.action_splashFragment_to_logFragment)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            // Your Code
+            findNavController().navigate(R.id.action_splashFragment_to_logFragment)
+        }, 3000)
+
 
 
     }
