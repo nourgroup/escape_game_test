@@ -2,8 +2,8 @@ package fr.mastergime.meghasli.escapegame.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
-import fr.mastergime.meghasli.escapegame.R
 import fr.mastergime.meghasli.escapegame.databinding.ActivityMainBinding
 import fr.mastergime.meghasli.escapegame.ui.fragments.SplashFragment
 
@@ -16,13 +16,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        _binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(_binding.root)
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
 
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.splash_fragment, splashFragment)
-            commit()
-        }
+//        Navigation.findNavController(this,R.id.fragment).currentDestination
+
+//        _binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(_binding.root)
+//
+//        supportFragmentManager.beginTransaction().apply {
+//            replace(R.id.fragment, splashFragment)
+//            commit()
+//        }
 
     }
 }
