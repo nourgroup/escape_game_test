@@ -10,31 +10,54 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <com.airbnb.lottie.LottieAnimationView
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/animation_view_loader"-->
+<!--        android:layout_width="194dp"-->
+<!--        android:layout_height="191dp"-->
+<!--        app2:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app2:layout_constraintEnd_toEndOf="parent"-->
+<!--        app2:layout_constraintHorizontal_bias="0.496"-->
+<!--        app2:layout_constraintStart_toStartOf="parent"-->
+<!--        app2:layout_constraintTop_toTopOf="parent"-->
+<!--        app2:layout_constraintVertical_bias="0.139"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_fileName="assets"-->
+<!--        app:lottie_loop="true" />-->
+
+    <ImageView
         android:id="@+id/animation_view_loader"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        app2:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="275dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/logo_escape_game"
         app2:layout_constraintEnd_toEndOf="parent"
-        app2:layout_constraintHorizontal_bias="0.496"
         app2:layout_constraintStart_toStartOf="parent"
-        app2:layout_constraintTop_toTopOf="parent"
-        app2:layout_constraintVertical_bias="0.139"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="assets"
-        app:lottie_loop="true" />
+        app2:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title_escape_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="@string/escape_game"
-        android:textSize="22sp"
-        android:textColor="@color/black"
         android:fontFamily="@font/italien"
+        android:text="@string/escape_game"
+        android:textColor="@color/black"
+        android:textSize="75sp"
         app2:layout_constraintEnd_toEndOf="parent"
         app2:layout_constraintStart_toStartOf="parent"
         app2:layout_constraintTop_toBottomOf="@+id/animation_view_loader" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_loading"
+        android:layout_width="275dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="120dp"
+        app2:layout_constraintEnd_toEndOf="parent"
+        app2:layout_constraintHorizontal_bias="0.455"
+        app2:layout_constraintStart_toStartOf="parent"
+        app2:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="assets"
+        app:lottie_loop="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

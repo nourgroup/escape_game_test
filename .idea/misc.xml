@@ -7,6 +7,9 @@
         <entry key="..\:/Android-Projects/Escape_Game/app/src/main/res/font/italien.xml" value="0.1640625" />
         <entry key="..\:/Android-Projects/Escape_Game/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Android-Projects/Escape_Game/app/src/main/res/layout/fragment_blank.xml" value="0.13385416666666666" />
+        <entry key="..\:/Android-Projects/Escape_Game/app/src/main/res/layout/fragment_login.xml" value="0.1838768115942029" />
+        <entry key="..\:/Android-Projects/Escape_Game/app/src/main/res/layout/fragment_register.xml" value="0.2" />
+        <entry key="..\:/Android-Projects/Escape_Game/app/src/main/res/layout/fragment_splash.xml" value="0.1838768115942029" />
       </map>
     </option>
   </component>

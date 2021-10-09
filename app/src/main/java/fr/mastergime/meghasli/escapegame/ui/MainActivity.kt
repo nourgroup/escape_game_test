@@ -1,9 +1,11 @@
-package fr.mastergime.meghasli.escapegame
+package fr.mastergime.meghasli.escapegame.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
+import fr.mastergime.meghasli.escapegame.R
 import fr.mastergime.meghasli.escapegame.databinding.ActivityMainBinding
+import fr.mastergime.meghasli.escapegame.ui.fragments.SplashFragment
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
