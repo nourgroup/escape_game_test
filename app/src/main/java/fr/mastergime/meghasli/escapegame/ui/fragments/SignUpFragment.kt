@@ -1,35 +1,31 @@
 package fr.mastergime.meghasli.escapegame.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import fr.mastergime.meghasli.escapegame.R
-import fr.mastergime.meghasli.escapegame.databinding.FragmentLogBinding
-import fr.mastergime.meghasli.escapegame.databinding.FragmentSignUpBinding
 
-class SignUpFragment : Fragment() {
-
-
-    private lateinit var binding : FragmentSignUpBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentSignUpBinding.inflate(inflater)
-
-        return binding.root
-    }
-
+@AndroidEntryPoint
+class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object  : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                Log.d("signup", "handleOnBackPressed: ")
+                Toast.makeText(context, "labas", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_signUpFragment_to_logFragment)
+            }
+        })
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
 
 }

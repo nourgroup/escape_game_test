@@ -8,22 +8,45 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="fr.mastergime.meghasli.escapegame.ui.fragments.SplashFragment"
-        android:label="SplashFragment" >
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_logFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
             app:destination="@id/logFragment" />
     </fragment>
     <fragment
         android:id="@+id/logFragment"
         android:name="fr.mastergime.meghasli.escapegame.ui.fragments.LogFragment"
-        android:label="LogFragment" >
+        android:label="Login"
+        tools:layout="@layout/fragment_log">
         <action
             android:id="@+id/action_logFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_logFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="fr.mastergime.meghasli.escapegame.ui.fragments.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_logFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:destination="@id/logFragment"
+            app:popUpTo="@+id/logFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="fr.mastergime.meghasli.escapegame.ui.fragments.MenuFragment"
+        android:label="Menu"
+        tools:layout="@layout/fragment_menu" />
 </navigation>
