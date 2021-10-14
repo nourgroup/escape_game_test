@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,12 +23,11 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // _binding = FragmentSplashBinding.bind(view)
+        _binding = FragmentSplashBinding.bind(view)
 
+        (activity as AppCompatActivity).supportActionBar?.hide()
 
-        Log.d("nav", "onViewCreated: ${findNavController().currentDestination}")
         lunchLogoAnimation()
-
     }
 
     private fun lunchLoadingAnimation() {
@@ -40,7 +40,8 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             activityScope2.cancel()
             Toast.makeText(context, "Another Fragment", Toast.LENGTH_SHORT).show()
             _binding.animationViewLoading.visibility = View.GONE
-            findNavController().navigate(R.id.action_signUpFragment_to_logFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_logFragment)
+
         }
     }
 
