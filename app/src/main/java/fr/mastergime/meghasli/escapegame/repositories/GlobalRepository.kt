@@ -15,7 +15,7 @@ class GlobalRepository @Inject constructor (val authServiceFirebase : AuthServic
         return authServiceFirebase.signup(email, password)
     }
 
-    fun login (email : String , password : String)  {
+     fun login (email : String , password : String)  {
          authServiceFirebase.login(email, password)
     }
 

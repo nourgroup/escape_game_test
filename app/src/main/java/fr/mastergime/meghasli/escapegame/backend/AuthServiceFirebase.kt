@@ -25,7 +25,7 @@ class AuthServiceFirebase @Inject constructor () {
     suspend fun signup ( email: String ,  password : String ) : String {
 
 
-        var message = "hjuhj"
+        var message = ""
         auth = FirebaseAuth.getInstance()
 
         auth.createUserWithEmailAndPassword(email,password)
@@ -42,7 +42,7 @@ class AuthServiceFirebase @Inject constructor () {
     }
 
 
-    fun login ( email: String ,  password : String ) {
+     fun login ( email: String ,  password : String ) {
 
         auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(email, password)

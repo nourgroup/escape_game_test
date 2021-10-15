@@ -24,7 +24,7 @@ class AuthViewModel @Inject constructor (val globalRepository: GlobalRepository)
             return messageSignUp
         }
 
-    fun login ( email : String , password: String)  {
+     fun login ( email : String , password: String)  {
         globalRepository.login(email,password)
     }
 

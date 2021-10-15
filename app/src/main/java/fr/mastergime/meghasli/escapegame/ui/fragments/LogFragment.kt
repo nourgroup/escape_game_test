@@ -24,9 +24,7 @@ import fr.mastergime.meghasli.escapegame.viewmodels.AuthViewModel
 class LogFragment : Fragment() {
 
     private lateinit var binding : FragmentLogBinding
-
     private lateinit var auth: FirebaseAuth
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +52,6 @@ class LogFragment : Fragment() {
             if (test()) {
 
                 authViewModel.login(binding.emailTextInput.editText?.text.toString(),binding.passwordTextInput.editText?.text.toString())
-
 
 
                         if (auth.currentUser!=null){
