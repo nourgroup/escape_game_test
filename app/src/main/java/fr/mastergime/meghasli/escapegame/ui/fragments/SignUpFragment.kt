@@ -58,8 +58,12 @@ class SignUpFragment : Fragment() {
 
             if(test()){
 
+                val email = binding.emailTextInput.editText?.text.toString()
+                val password = binding.passwordTextInput.editText?.text.toString()
+                val pseudo = binding.pseudoTextInput.editText?.text.toString()
+
                 binding.progressBar2.visibility=View.VISIBLE
-                authViewModel.signUp(binding.emailTextInput.editText?.text.toString(),binding.passwordTextInput.editText?.text.toString())
+                authViewModel.signUp(email, password, pseudo)
                     .observe(viewLifecycleOwner,
                     Observer {
 

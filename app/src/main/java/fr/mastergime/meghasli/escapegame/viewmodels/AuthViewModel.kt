@@ -3,7 +3,6 @@ package fr.mastergime.meghasli.escapegame.viewmodels
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.mastergime.meghasli.escapegame.repositories.GlobalRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -16,10 +15,10 @@ class AuthViewModel @Inject constructor (val globalRepository: GlobalRepository)
     var messageSignUp : MutableLiveData<String> = MutableLiveData()
 
 
-        fun signUp ( email : String , password: String) : MutableLiveData<String> {
+        fun signUp ( email : String , password: String , pseudo:String) : MutableLiveData<String> {
 
-            CoroutineScope(Dispatchers.IO).launch {
-                messageSignUp.postValue(globalRepository.signUp(email,password))
+            viewModelScope.launch(Dispatchers.IO){
+                messageSignUp.postValue(globalRepository.signUp(email,password,pseudo))
             }
             return messageSignUp
         }
