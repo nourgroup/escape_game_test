@@ -2,30 +2,103 @@ package fr.mastergime.meghasli.escapegame.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import fr.mastergime.meghasli.escapegame.R
+import fr.mastergime.meghasli.escapegame.databinding.FragmentLogBinding
+import fr.mastergime.meghasli.escapegame.databinding.FragmentSignUpBinding
+import fr.mastergime.meghasli.escapegame.viewmodels.AuthViewModel
+import kotlinx.android.synthetic.main.fragment_log.*
+import kotlinx.android.synthetic.main.fragment_sign_up.*
+import kotlin.math.log
+
 
 @AndroidEntryPoint
-class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
+class SignUpFragment : Fragment() {
+
+
+    private lateinit var binding : FragmentSignUpBinding
+    private lateinit var auth: FirebaseAuth
+
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSignUpBinding.inflate(inflater)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val authViewModel : AuthViewModel by viewModels ()
+
+        binding.registerButton.setOnClickListener {
+
+            if(test()){
+
+                authViewModel.signUp(binding.emailTextInput.editText?.text.toString(),binding.passwordTextInput.editText?.text.toString())
+                    .observe(viewLifecycleOwner,
+                    Observer {
+
+                        if(it == "success"){
+                            findNavController().navigate(R.id.action_signUpFragment_to_logFragment)
+                            Toast.makeText(activity,it,Toast.LENGTH_SHORT).show()
+                        }else{
+                            Toast.makeText(activity,it,Toast.LENGTH_SHORT).show()
+                        }
+
+
+                    })
+
+
+            }
+
+
+        }
+
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object  : OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
-                Log.d("signup", "handleOnBackPressed: ")
+                // Log.d("signup", "handleOnBackPressed: ")
                 Toast.makeText(context, "labas", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_signUpFragment_to_logFragment)
             }
         })
+
+
+
+
     }
 
-    override fun onResume() {
-        super.onResume()
+    fun test() : Boolean {
+        if (binding.emailTextInput.editText?.text.toString().isNullOrEmpty()){
+            binding.emailTextInput.error="enter email"
+            return false
+        }
+        if (binding.passwordTextInput.editText?.text.toString().length< 6){
+            binding.emailTextInput.error= null
+            binding.passwordTextInput.error= "password should have at least 6 characters"
+            return false
+        }
+        return true
     }
 
 }

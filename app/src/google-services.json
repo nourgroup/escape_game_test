@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673273319002:android:4cf2d781c44249aab41263",
+        "android_client_info": {
+          "package_name": "fr.mastersid.dkhissi.stackquestions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673273319002-rjrffru481rf7k5a9k46oqmcnl2qsuv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkFausD1NbX4Lmc4vtku030t03lZP8oV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673273319002-rjrffru481rf7k5a9k46oqmcnl2qsuv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

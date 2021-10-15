@@ -12,9 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-
     </style>
-
     <style name="toolBar" >
         <!--This line changes the color of text in Toolbar-->
         <!--This line changes the color of icons in toolbar (back, overflow menu icons)-->
@@ -24,6 +22,4 @@
         <item name="android:textSize">30sp</item>
         <item name="android:fontFamily">@font/italien</item>
     </style>
-
-
 </resources>
