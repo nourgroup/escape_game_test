@@ -19,11 +19,14 @@ import fr.mastergime.meghasli.escapegame.databinding.FragmentSignUpBinding
 import fr.mastergime.meghasli.escapegame.viewmodels.AuthViewModel
 import kotlinx.android.synthetic.main.fragment_log.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import java.util.regex.Pattern
 import kotlin.math.log
 
 
 @AndroidEntryPoint
 class SignUpFragment : Fragment() {
+
+
 
 
     private lateinit var binding : FragmentSignUpBinding
@@ -55,17 +58,20 @@ class SignUpFragment : Fragment() {
 
             if(test()){
 
+                binding.progressBar2.visibility=View.VISIBLE
                 authViewModel.signUp(binding.emailTextInput.editText?.text.toString(),binding.passwordTextInput.editText?.text.toString())
                     .observe(viewLifecycleOwner,
                     Observer {
 
                         if(it == "success"){
                             findNavController().navigate(R.id.action_signUpFragment_to_logFragment)
+                            auth.signOut()
                             Toast.makeText(activity,it,Toast.LENGTH_SHORT).show()
                         }else{
                             Toast.makeText(activity,it,Toast.LENGTH_SHORT).show()
                         }
 
+                        binding.progressBar2.visibility=View.INVISIBLE
 
                     })
 
@@ -89,10 +95,27 @@ class SignUpFragment : Fragment() {
     }
 
     fun test() : Boolean {
+        val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+        )
+
         if (binding.emailTextInput.editText?.text.toString().isNullOrEmpty()){
             binding.emailTextInput.error="enter email"
             return false
         }
+
+        if(!(EMAIL_ADDRESS_PATTERN.matcher(binding.emailTextInput.editText?.text.toString()).matches())){
+            binding.emailTextInput.error="enter a valid email"
+            return false
+        }
+
+
         if (binding.passwordTextInput.editText?.text.toString().length< 6){
             binding.emailTextInput.error= null
             binding.passwordTextInput.error= "password should have at least 6 characters"

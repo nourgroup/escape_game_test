@@ -19,12 +19,12 @@ import fr.mastergime.meghasli.escapegame.databinding.FragmentMenuBinding
 class MenuFragment : Fragment(R.layout.fragment_menu) {
     private lateinit var auth: FirebaseAuth
 
-
+    private lateinit var binding : FragmentMenuBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
     }
-    private lateinit var binding : FragmentMenuBinding
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //binding.txtTest.text= auth.currentUser!!.email
@@ -36,8 +36,13 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
                 findNavController().navigate(R.id.action_menuFragment_to_logFragment)
                 Toast.makeText(activity,"Logout",Toast.LENGTH_SHORT).show()
             }
+        }
+        binding.btnCreerPartie.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_creatSessionFragment)
+        }
+        binding.btnRejoindre.setOnClickListener {
 
-
+            findNavController().navigate(R.id.action_menuFragment_to_joinSessionFragment)
         }
     }
 

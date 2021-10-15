@@ -51,5 +51,21 @@
         <action
             android:id="@+id/action_menuFragment_to_logFragment"
             app:destination="@id/logFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_creatSessionFragment"
+            app:destination="@id/creatSessionFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_joinSessionFragment"
+            app:destination="@id/joinSessionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/creatSessionFragment"
+        android:name="fr.mastergime.meghasli.escapegame.ui.fragments.CreatSessionFragment"
+        android:label="fragment_creat_session"
+        tools:layout="@layout/fragment_creat_session" />
+    <fragment
+        android:id="@+id/joinSessionFragment"
+        android:name="fr.mastergime.meghasli.escapegame.ui.fragments.JoinSessionFragment"
+        android:label="fragment_join_session"
+        tools:layout="@layout/fragment_join_session" />
 </navigation>

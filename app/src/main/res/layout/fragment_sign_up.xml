@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/animation_view_loader"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/logo_escape_game"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,17 +23,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="272dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/pseudo"
         app:boxStrokeColor="@color/gameColor"
-        app:endIconDrawable="@drawable/ic_clear"
 
+        app:endIconDrawable="@drawable/ic_clear"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animation_view_loader"
         app:startIconDrawable="@drawable/ic_person">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,16 +48,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/email"
-        app:endIconDrawable="@drawable/ic_clear"
 
+        app:endIconDrawable="@drawable/ic_clear"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pseudo_text_input"
         app:startIconDrawable="@drawable/ic_baseline_mail_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -72,17 +72,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="492dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/password"
         app:boxStrokeColor="@color/gameColor"
-        app:endIconMode="password_toggle"
 
+        app:endIconMode="password_toggle"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_text_input"
         app:startIconDrawable="@drawable/ic_lock">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -96,17 +96,31 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/register"
         app:cornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_text_input"
         app:strokeColor="@color/gameColor"
         app:strokeWidth="1.5dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_button"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

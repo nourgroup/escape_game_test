@@ -18,6 +18,8 @@ import fr.mastergime.meghasli.escapegame.R
 import fr.mastergime.meghasli.escapegame.databinding.FragmentLogBinding
 import fr.mastergime.meghasli.escapegame.databinding.FragmentSplashBinding
 import fr.mastergime.meghasli.escapegame.viewmodels.AuthViewModel
+import kotlinx.coroutines.delay
+import java.util.regex.Pattern
 
 
 @AndroidEntryPoint
@@ -51,6 +53,8 @@ class LogFragment : Fragment() {
 
             if (test()) {
 
+                binding.progressBar.visibility= View.VISIBLE
+
                 authViewModel.login(binding.emailTextInput.editText?.text.toString(),binding.passwordTextInput.editText?.text.toString())
 
 
@@ -61,6 +65,7 @@ class LogFragment : Fragment() {
                             Toast.makeText(activity,"failure",Toast.LENGTH_SHORT).show()
                         }
 
+                binding.progressBar.visibility= View.INVISIBLE
 
 
             }
@@ -87,8 +92,21 @@ class LogFragment : Fragment() {
         })
     }
     fun test() : Boolean {
+        val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+        )
         if (binding.emailTextInput.editText?.text.toString().isNullOrEmpty()){
             binding.emailTextInput.error="enter email"
+            return false
+        }
+        if(!(EMAIL_ADDRESS_PATTERN.matcher(binding.emailTextInput.editText?.text.toString()).matches())){
+            binding.emailTextInput.error="enter a valid email"
             return false
         }
         if (binding.passwordTextInput.editText?.text.toString().length< 6){
