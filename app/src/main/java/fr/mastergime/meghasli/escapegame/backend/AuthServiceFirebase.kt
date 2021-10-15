@@ -27,31 +27,19 @@ class AuthServiceFirebase @Inject constructor() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-
+    var message = ""
+    lateinit var user : User
 
     suspend fun signup(email: String, password: String, pseudo: String): String {
-        var message = "success"
+
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-
         try {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-
                     if (task.isSuccessful) {
-
                         val id = auth.currentUser!!.uid
-                        val user = User(email = email, pseudo = pseudo, id = id)
-
-
-                            db.collection("Users").document(user.id).set(user)
-                                .addOnSuccessListener { task ->
-                                    Log.d("khaled", "DocumentSnapshot successfully written!")
-                                    message = "success"
-                                }.addOnFailureListener { e ->
-                                    Log.w("khaled", "Error writing document", e)
-                                }
-
+                         user = User(email = email, pseudo = pseudo, id = id)
                     } else {
                         Log.d("khaled", "createUserWithEmail:failure", task.exception)
                     }
@@ -59,9 +47,8 @@ class AuthServiceFirebase @Inject constructor() {
 
         } catch (e: FirebaseNetworkException) {
             message = "Network Error, Check Your Connectivity"
-        } finally {
-            return message
         }
+        return a(user)
     }
 
 
@@ -77,6 +64,19 @@ class AuthServiceFirebase @Inject constructor() {
                     Log.d("xxx", "signInWithEmail:failure")
                 }
             }
+    }
+
+    suspend fun a(user: User) : String{
+        db.collection("Users")
+            .document(user.id)
+            .set(user)
+            .addOnSuccessListener {
+                Log.d("khaled", "DocumentSnapshot successfully written!")
+                message = "success"
+            }.addOnFailureListener { e ->
+                Log.w("khaled", "Error writing document", e)
+            }.await()
+        return message
     }
 }
 
